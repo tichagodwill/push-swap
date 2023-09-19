@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"strings"
 
-	"pushswap/funcs"
+	"pushswap/stack"
 )
 
 func main() {
@@ -14,7 +14,13 @@ func main() {
 		fmt.Println("usage:")
 		return
 	}
-	var stacka funcs.StackA // create a stack variable of type Stack
+	var sa stack.S // create a stack variable of type Stack
+	// var sb stack.S // create a stack variable of type Stack
+	PushArgsToStack(os.Args[1],&sa)
+	PopStack(&sa)
+}
+
+func PushArgsToStack(str string, stack *stack.S) {
 	numStr := strings.Fields(os.Args[1])
 	// Push from the last element to the first so the first will be on the top of the stack
 	for i := len(numStr) - 1; i >= 0; i-- {
@@ -23,10 +29,13 @@ func main() {
 			fmt.Println("Error Parsing integer ", err)
 			return
 		}
-		stacka.Push(n)
+		stack.Push(n)
 	}
-	for len(stacka) > 0 {
-		x, y := stacka.Pop()
+}
+
+func PopStack(stack *stack.S) {
+	for len(*stack) > 0 {
+		x, y := stack.Pop()
 		if y {
 			fmt.Println(x)
 		}

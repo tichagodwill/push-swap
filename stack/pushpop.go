@@ -1,23 +1,22 @@
-package funcs
+package stack
 
 type (
-	StackA []int64
-	StackB []int64
+	S []int64
 )
 
 // IsEmpty: check if stack is empty
-func (s *StackA) AIsEmpty() bool {
+func (s *S) AIsEmpty() bool {
 	return len(*s) == 0
 }
 
 // Push a new value onto the stack
-func (s *StackA) Push(n int64) {
-	*s = append(*s, n) // Simply append the new value to the end of the stack
+func (s *S) Push(n int64) {
+	*s = append(*s, n) // Simply append the new value to the end of the array
 	// the end of the array will be the top of the stack
 }
 
 // Remove and return top element of stack. Return false if stack is empty.
-func (s *StackA) Pop() (int64, bool) {
+func (s *S) Pop() (int64, bool) {
 	if s.AIsEmpty() {
 		return -1, false
 	} else {
@@ -27,3 +26,5 @@ func (s *StackA) Pop() (int64, bool) {
 		return element, true
 	}
 }
+
+
