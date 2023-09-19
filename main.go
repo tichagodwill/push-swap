@@ -18,8 +18,9 @@ func main() {
 	var sa stack.S // create a stack variable of type Stack
 	var sb stack.S // create a stack variable of type Stack
 	PushArgsToStack(os.Args[1], &sa)
-	funcs.PA(&sa, &sb)
+	funcs.PB(&sa, &sb)
 	PopStack(&sa)
+	PopStack(&sb)
 }
 
 func PushArgsToStack(str string, stack *stack.S) {
