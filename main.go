@@ -6,6 +6,7 @@ import (
 	"strconv"
 	"strings"
 
+	"pushswap/funcs"
 	"pushswap/stack"
 )
 
@@ -15,8 +16,9 @@ func main() {
 		return
 	}
 	var sa stack.S // create a stack variable of type Stack
-	// var sb stack.S // create a stack variable of type Stack
-	PushArgsToStack(os.Args[1],&sa)
+	var sb stack.S // create a stack variable of type Stack
+	PushArgsToStack(os.Args[1], &sa)
+	funcs.PA(&sa, &sb)
 	PopStack(&sa)
 }
 
