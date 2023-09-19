@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"os"
 	"strconv"
 	"strings"
@@ -21,7 +20,7 @@ func main() {
 	for i := len(numStr) - 1; i >= 0; i-- {
 		n, err := strconv.ParseInt(numStr[i], 10, 64)
 		if err != nil {
-			fmt.Println("Error Parsing integer ",err)
+			fmt.Println("Error Parsing integer ", err)
 			return
 		}
 		stacka.Push(n)
