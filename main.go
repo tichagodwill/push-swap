@@ -13,7 +13,6 @@ func main() {
 		return
 	}
 	funcs.InitializeStackA(os.Args[1])
-	funcs.Checker()
 	// funcs.PB()
 	// funcs.PB()
 	// funcs.RA()

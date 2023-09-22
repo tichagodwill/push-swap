@@ -5,11 +5,32 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"pushswap/stack"
 	"strings"
 )
 
+var validInstructions = map[string]func()bool{
+	"pa":  PA,
+	"pb":  PB,
+	"sa":  SA,
+	"sb":  SB,
+	"ss":  SS,
+	"ra":  RA,
+	"rb":  RB,
+	"rr":  RR,
+	"rra": RRA,
+	"rrb": RRB,
+	"rrr": RRR,
+}
+
 func Checker() {
-	instructions := []string{}
+	if len(os.Args) == 1 {
+		return
+	} else if len(os.Args) != 2 {
+		fmt.Println("usage:")
+		return
+	}
+	InitializeStackA(os.Args[1])
 
 	// Create a new scanner to read from standard input
 	scanner := bufio.NewScanner(os.Stdin)
@@ -19,14 +40,21 @@ func Checker() {
 		// Retrieve the input from the scanner
 		input := scanner.Text()
 		// Check if the input is a valid instruction
-		if isInstruction(input) {
-			instructions = append(instructions, input)
+		if input == "" {
+			break
+		} else if isInstruction(input) {
+			if !applyInsruction(input) {
+				log.Fatal("Error: cannot apply the instruction")
+			}
 		} else {
 			log.Fatal("Error: invalid instruction")
 		}
-		// if len(instructions) == 7 {
-		// 	break
-		// }
+	}
+
+	if isSorted(StackA,StackB) {
+		fmt.Println("OK")
+	} else {
+		fmt.Println("KO")
 	}
 
 	// Check for any scanning errors
@@ -34,32 +62,31 @@ func Checker() {
 		fmt.Println("Error:", err)
 	}
 
-	// Apply the instructions on the stack
-	// ApplyInsructions(instructions)
 }
 
 func isInstruction(str string) bool  {
 	str = strings.ToLower(str)
-	validInstructions := map[string]func()bool{
-		"pa":  PA,
-		"pb":  PB,
-		"sa":  SA,
-		"sb":  SB,
-		"ss":  SS,
-		"ra":  RA,
-		"rb":  RB,
-		"rr":  RR,
-		"rra": RRA,
-		"rrb": RRB,
-		"rrr": RRR,
-	}
-	if validInstructions[str] != nil {
-		return validInstructions[str]()
-	}
-	return false
+	return validInstructions[str] != nil
 }
 
-// func ApplyInsructions(inst []string) bool {
+func applyInsruction(str string) bool {
+	return validInstructions[str]()
+}
 
-// }
-
+func isSorted(sa stack.S, sb stack.S) bool{
+	if len(sb) != 0 {
+		return false
+	}
+	prev, _ := sa.Pop()
+	for len(StackA) > 0 {
+		x, success := sa.Pop()
+		if !success {
+			break
+		}
+		if x < prev {
+			return false
+		}
+		prev = x
+	} 
+	return true
+}
