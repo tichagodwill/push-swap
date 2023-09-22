@@ -41,6 +41,7 @@ func main() {
 	for scanner.Scan() {
 		// Retrieve the input from the scanner
 		input := scanner.Text()
+		input = strings.ToLower(input)
 		// Check if the input is a valid instruction
 		if input == "" {
 			break
@@ -66,7 +67,6 @@ func main() {
 }
 
 func isInstruction(str string) bool {
-	str = strings.ToLower(str)
 	return validInstructions[str] != nil
 }
 
