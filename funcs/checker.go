@@ -13,7 +13,7 @@ func Checker() {
 
 	// Create a new scanner to read from standard input
 	scanner := bufio.NewScanner(os.Stdin)
-	
+
 	// Read input from standard input
 	for scanner.Scan() {
 		// Retrieve the input from the scanner
@@ -24,6 +24,9 @@ func Checker() {
 		} else {
 			log.Fatal("Error: invalid instruction")
 		}
+		// if len(instructions) == 7 {
+		// 	break
+		// }
 	}
 
 	// Check for any scanning errors
@@ -35,25 +38,28 @@ func Checker() {
 	// ApplyInsructions(instructions)
 }
 
-func isInstruction(str string) bool {
+func isInstruction(str string) bool  {
 	str = strings.ToLower(str)
-	validInstructions := map[string]bool{
-		"pa":  true,
-		"pb":  true,
-		"sa":  true,
-		"sb":  true,
-		"ss":  true,
-		"ra":  true,
-		"rb":  true,
-		"rr":  true,
-		"rra": true,
-		"rrb": true,
-		"rrr": true,
+	validInstructions := map[string]func()bool{
+		"pa":  PA,
+		"pb":  PB,
+		"sa":  SA,
+		"sb":  SB,
+		"ss":  SS,
+		"ra":  RA,
+		"rb":  RB,
+		"rr":  RR,
+		"rra": RRA,
+		"rrb": RRB,
+		"rrr": RRR,
 	}
-
-	return validInstructions[str]
+	if validInstructions[str] != nil {
+		return validInstructions[str]()
+	}
+	return false
 }
 
 // func ApplyInsructions(inst []string) bool {
 
 // }
+
