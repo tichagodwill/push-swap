@@ -1,7 +1,7 @@
 package funcs
 
 import (
-	"fmt"
+	"log"
 	"os"
 	"strconv"
 	"strings"
@@ -24,8 +24,7 @@ func PushArgsToStack(str string) {
 	for i := len(numStr) - 1; i >= 0; i-- {
 		n, err := strconv.ParseInt(numStr[i], 10, 64)
 		if err != nil {
-			fmt.Println("Error Parsing integer ", err)
-			return
+			log.Fatal("Error Parsing integer ", err)
 		}
 		StackA.Push(n)
 	}
