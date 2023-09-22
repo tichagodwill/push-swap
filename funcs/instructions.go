@@ -1,5 +1,7 @@
 package funcs
 
+import "fmt"
+
 var validInstructions = map[string]func() bool{
 	"pa":  PA,
 	"pb":  PB,
@@ -19,5 +21,9 @@ func IsInstruction(str string) bool {
 }
 
 func ApplyInsruction(str string) bool {
+	if !IsInstruction(str) {
+		fmt.Printf("Cannot Apply %v instruction\n", str) 
+		return false
+	}
 	return validInstructions[str]()
 }
