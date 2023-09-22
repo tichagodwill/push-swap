@@ -10,8 +10,10 @@ import (
 
 func Checker() {
 	instructions := []string{}
+
 	// Create a new scanner to read from standard input
 	scanner := bufio.NewScanner(os.Stdin)
+	
 	// Read input from standard input
 	for scanner.Scan() {
 		// Retrieve the input from the scanner
@@ -23,6 +25,7 @@ func Checker() {
 			log.Fatal("Error: invalid instruction")
 		}
 	}
+
 	// Check for any scanning errors
 	if err := scanner.Err(); err != nil {
 		fmt.Println("Error:", err)
