@@ -15,10 +15,10 @@ var (
 )
 
 func InitializeStackA(str string) {
-	PushArgsToStack(str)
+	PushToStack(str)
 }
 
-func PushArgsToStack(str string) {
+func PushToStack(str string) {
 	numStr := strings.Fields(os.Args[1])
 	// Push from the last element to the first so the first will be on the top of the stack
 	for i := len(numStr) - 1; i >= 0; i-- {
