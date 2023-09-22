@@ -1,5 +1,7 @@
 package stack
 
+import "fmt"
+
 type (
 	S []int64
 )
@@ -27,4 +29,11 @@ func (s *S) Pop() (int64, bool) {
 	}
 }
 
-
+func (s S) PopStack() {
+	for len(s) > 0 {
+		x, success := s.Pop()
+		if success {
+			fmt.Println(x)
+		}
+	}
+}

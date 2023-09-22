@@ -1,20 +1,18 @@
 package funcs
 
-import "pushswap/stack"
-
-func PB(sA *stack.S, sB *stack.S) bool {
-	a, canPop := sA.Pop()
+func PB() bool {
+	a, canPop := StackA.Pop()
 	if canPop {
-		*sB = append(*sB, a)
+		StackB = append(StackB, a)
 		return true
 	}
 	return false
 }
 
-func PA(sA *stack.S, sB *stack.S) bool {
-	b, canPop := sB.Pop()
+func PA() bool {
+	b, canPop := StackB.Pop()
 	if canPop {
-		*sA = append(*sA, b)
+		StackA = append(StackA, b)
 		return true
 	}
 	return false
