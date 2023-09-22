@@ -13,6 +13,13 @@ func main() {
 		return
 	}
 	funcs.InitializeStackA(os.Args[1])
+	funcs.PB()
+	funcs.PB()
+	funcs.RA()
+	funcs.SA()
+	funcs.RRR()
+	funcs.PA()
+	funcs.PA()
 	funcs.StackA.PopStack()
 	// var sa stack.S // create a stack variable of type Stack
 	// var sb stack.S // create a stack variable of type Stack
