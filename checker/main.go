@@ -1,36 +1,38 @@
-package funcs
+package main
 
 import (
 	"bufio"
 	"fmt"
 	"log"
 	"os"
-	"pushswap/stack"
 	"strings"
+
+	"pushswap/funcs"
+	"pushswap/stack"
 )
 
-var validInstructions = map[string]func()bool{
-	"pa":  PA,
-	"pb":  PB,
-	"sa":  SA,
-	"sb":  SB,
-	"ss":  SS,
-	"ra":  RA,
-	"rb":  RB,
-	"rr":  RR,
-	"rra": RRA,
-	"rrb": RRB,
-	"rrr": RRR,
+var validInstructions = map[string]func() bool{
+	"pa":  funcs.PA,
+	"pb":  funcs.PB,
+	"sa":  funcs.SA,
+	"sb":  funcs.SB,
+	"ss":  funcs.SS,
+	"ra":  funcs.RA,
+	"rb":  funcs.RB,
+	"rr":  funcs.RR,
+	"rra": funcs.RRA,
+	"rrb": funcs.RRB,
+	"rrr": funcs.RRR,
 }
 
-func Checker() {
+func main() {
 	if len(os.Args) == 1 {
 		return
 	} else if len(os.Args) != 2 {
 		fmt.Println("usage:")
 		return
 	}
-	InitializeStackA(os.Args[1])
+	funcs.InitializeStackA(os.Args[1])
 
 	// Create a new scanner to read from standard input
 	scanner := bufio.NewScanner(os.Stdin)
@@ -51,7 +53,7 @@ func Checker() {
 		}
 	}
 
-	if isSorted(StackA,StackB) {
+	if isSorted(funcs.StackA, funcs.StackB) {
 		fmt.Println("OK")
 	} else {
 		fmt.Println("KO")
@@ -61,10 +63,9 @@ func Checker() {
 	if err := scanner.Err(); err != nil {
 		fmt.Println("Error:", err)
 	}
-
 }
 
-func isInstruction(str string) bool  {
+func isInstruction(str string) bool {
 	str = strings.ToLower(str)
 	return validInstructions[str] != nil
 }
@@ -73,12 +74,12 @@ func applyInsruction(str string) bool {
 	return validInstructions[str]()
 }
 
-func isSorted(sa stack.S, sb stack.S) bool{
+func isSorted(sa stack.S, sb stack.S) bool {
 	if len(sb) != 0 {
 		return false
 	}
 	prev, _ := sa.Pop()
-	for len(StackA) > 0 {
+	for len(sa) > 0 {
 		x, success := sa.Pop()
 		if !success {
 			break
@@ -87,6 +88,6 @@ func isSorted(sa stack.S, sb stack.S) bool{
 			return false
 		}
 		prev = x
-	} 
+	}
 	return true
 }
