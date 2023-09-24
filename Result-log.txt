@@ -1,0 +1,16 @@
+the input:
+"[23 87 3 67 4]"
+stake A:
+"[2 4 0 3 1]"
+sorted stake A:
+"[4 3 2 1 0]"
+instructions:
+"
+pb
+ra
+pb
+rr
+pa
+pa
+"
+steps: 6

@@ -11,14 +11,8 @@ import (
 )
 
 func main() {
-	if len(os.Args) == 1 {
-		return
-	} else if len(os.Args) != 2 {
-		fmt.Println("usage:")
-		return
-	}
 	// Before starting we should initialize the stack
-	funcs.InitializeStackA(os.Args[1])
+	funcs.InitializeStackA()
 
 	// Create a new scanner to read from standard input
 	scanner := bufio.NewScanner(os.Stdin)
@@ -33,7 +27,9 @@ func main() {
 			break
 		} else if funcs.IsInstruction(input) {
 			if !funcs.ApplyInsruction(input) {
-				log.Fatal("Error: cannot apply the instruction")
+				fmt.Printf("Error: cannot apply the instruction %v\n", input)
+				fmt.Println("KO")
+				os.Exit(1)
 			}
 		} else {
 			log.Fatal("Error: invalid instruction")
