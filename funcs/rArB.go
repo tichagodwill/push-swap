@@ -1,5 +1,6 @@
 package funcs
 
+//Rotate stack A (shift up all elements by 1; the first element becomes the last).
 func RA() bool {
 	len := len(StackA)
 	if len < 2 {
@@ -13,6 +14,7 @@ func RA() bool {
 	return true
 }
 
+//Rotate stack B.
 func RB() bool {
 	len := len(StackB)
 	if len < 2 {
@@ -26,6 +28,7 @@ func RB() bool {
 	return true
 }
 
+//Execute `ra` and `rb` simultaneously.
 func RR() bool {
 	if RA() && RB() {
 		return true

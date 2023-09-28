@@ -1,5 +1,6 @@
 package funcs
 
+//Swap the first two elements of stack A.
 func SA() bool {
 	len := len(StackA)
 	if len < 2 {
@@ -9,6 +10,7 @@ func SA() bool {
 	return true
 }
 
+//Swap the first two elements of stack B.
 func SB() bool {
 	len := len(StackB)
 	if len < 2 {
@@ -18,6 +20,7 @@ func SB() bool {
 	return true
 }
 
+//Execute `sa` and `sb` simultaneously.
 func SS() bool {
 	if SA() && SB() {
 		return true

@@ -43,21 +43,23 @@ func SmallInstructions(nums []int) string {
 // aStack implements stack operations for StackA.
 func aStack(a []int, half int) string {
 	swap := saIdx(a)
-	mid, i := (len(a) / 2), (len(a) - 1)
+	mid, i := (len(a) / 2), (len(a) - 1) // i is the top of the stack
 	if a[i] < half {
 		return "pb"
 	}
 	if swap > 0 {
-		if inOrder(a[i-1], a[i]) {
+		if inOrder(a[i-1], a[i]) { // a[i] > a[i-1] and the difference = 1
 			return "sa"
 		} else if swap < mid {
 			return "rra"
 		}
 	} else {
 		minNumIdx := smallest(a)
-		if minNumIdx == i {
+		if minNumIdx == i { // the minimum is in the top of the stack // will work only if the stack has two elements
 			return "pb"
-		} else if minNumIdx < mid || inOrder(a[i], a[0]) {
+		} else if minNumIdx < mid {
+			return "rra"
+		} else if inOrder(a[i], a[0]) { // a[0] > a[i] and the difference = 1
 			return "rra"
 		}
 	}

@@ -1,5 +1,6 @@
 package funcs
 
+//Reverse rotate stack A (shift down all elements by 1; the last element becomes the first).
 func RRA() bool {
 	len := len(StackA)
 	if len < 2 {
@@ -13,6 +14,7 @@ func RRA() bool {
 	return true
 }
 
+//Reverse rotate stack B.
 func RRB() bool {
 	len := len(StackB)
 	if len < 2 {
@@ -26,6 +28,7 @@ func RRB() bool {
 	return true
 }
 
+//Execute `rra` and `rrb` simultaneously.
 func RRR() bool {
 	if RRA() && RRB() {
 		return true

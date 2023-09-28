@@ -1,5 +1,6 @@
 package funcs
 
+//Push the top element of stack A to stack B.
 func PB() bool {
 	a, canPop := StackA.Pop()
 	if canPop {
@@ -9,6 +10,7 @@ func PB() bool {
 	return false
 }
 
+//Push the top element of stack B to stack A.
 func PA() bool {
 	b, canPop := StackB.Pop()
 	if canPop {
