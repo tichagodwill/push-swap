@@ -98,16 +98,20 @@ func match(ins string, a, b []int) string {
 	switch ins { // ins is an instruction from aStack(a)
 	case "pb":
 		if bins == "sb" {
-			if t := len(a) - saIdx(a); t < 3 {
-				if t == 1 {
+			// the first element of the stack or the second should be swapped
+			if t := len(a) - saIdx(a); t < 3 { // the last index i or the index i-1 should be swapped with the previus
+				// if the first element of the stack should be swapped
+				if t == 1 { // the last index of a should be swapped
 					return "ss"
 				}
-				return "ra"
+				// if the second element of the stck should be swapped
+				return "ra" // the index i-1 should be swapped
 			} else {
 				return "sb"
 			}
 		}
 	case "sa":
+		// the first element of the stack or the second should be swapped
 		if t := len(b) - sbIdx(b); t < 3 {
 			if bins == "sb" {
 				return "ss"
@@ -115,11 +119,11 @@ func match(ins string, a, b []int) string {
 			return "rb"
 		}
 	case "ra":
-		if bins == "rb" || bins == "sb" && len(b) == 2 {
+		if bins == "rb" || (bins == "sb" && len(b) == 2) {
 			return "rr"
 		}
 	case "rra":
-		if bins == "rrb" || bins == "sb" && len(b) == 2 {
+		if bins == "rrb" || (bins == "sb" && len(b) == 2) {
 			return "rrr"
 		}
 	}
