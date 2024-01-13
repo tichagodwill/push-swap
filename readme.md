@@ -27,7 +27,7 @@ To get started with the Push-Swap project, follow these steps:
 1. Clone the repository to your local machine.
 
 ```console 
-git clone https://learn.reboot01.com/git/amali/push-swap
+git clone git clone https://github.com/emahfoodh/push-swap.git
 ```
 
 2. Compile the `push-swap` and `checker` programs using the provided build file .
@@ -101,8 +101,8 @@ To test the push-swap and checker programs, you can create test cases with vario
 
 ## Authors
 
-- emahfood
-- amali
+- amali01 (Amjad Ali)
+- emahfoodh (Eman Mahfoodh)
 
  
 ## To be noted for the audits
