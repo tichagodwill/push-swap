@@ -26,8 +26,8 @@ To get started with the Push-Swap project, follow these steps:
 
 1. Clone the repository to your local machine.
 
-```console 
-git clone git clone https://github.com/emahfoodh/push-swap.git
+```console
+git clone https://github.com/tichagodwill/push-swap
 ```
 
 2. Compile the `push-swap` and `checker` programs using the provided build file .
@@ -99,10 +99,10 @@ You can use the following instructions to manipulate the stacks and sort the int
 
 To test the push-swap and checker programs, you can create test cases with various input integers and instructions. Verify that the programs produce the expected output.
 
-## Authors
+## Author
 
-- amali01 (Amjad Ali)
-- emahfoodh (Eman Mahfoodh)
+- Ticha Nji
+
 
  
 ## To be noted for the audits
